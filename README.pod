@@ -1,14 +1,18 @@
 =pod
-=head1 SYNOPSIS
-use Orgmode::OrgNode;
-use Orgmode::Grammar;
-use Orgmode::Actions;
 
-my $actions = Orgmode::Actions.new;
-my $match = Orgmode::Grammar.parse($str, :$actions);
-my @orgnodes = $match.ast;
+=head1 SYNOPSIS
+
+    use Orgmode::OrgNode;
+    use Orgmode::Grammar;
+    use Orgmode::Actions;
+
+    my $actions = Orgmode::Actions.new;
+    my $match = Orgmode::Grammar.parse($str, :$actions); 
+    my @orgnodes = $match.ast;
 
 =head1 DESCRIPTION
+
 ParseOrgmode is a emacs orgmode file parser implemented in Perl6 rule. currently only simple markup is supported.
+
 =cut
 
