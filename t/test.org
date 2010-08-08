@@ -1,0 +1,12 @@
+** strange line
+   something strange here
+* first
+  just a line
+** second
+   some line here
+*** third
+    forrthe line
+*** third2
+**** forth
+** ssecond
+*** tthird
