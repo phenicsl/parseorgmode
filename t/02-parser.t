@@ -19,11 +19,10 @@ say "OrgNode Dump:";
 .perl.say for @orgnodes;
 }
 
-
 {
 say $delimiter;
-my Str $str = Q<<* first
-** second>>;
+my Str $str = Q<<* first :@tag1:@tag2:
+* second >>;
 
 my $actions = Orgmode::Actions.new;
 my $match = Orgmode::Grammar.parse($str, :$actions);
