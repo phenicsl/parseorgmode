@@ -18,15 +18,19 @@ method TOP($/) {
 
 method orgnode($/) {
     my Int $level = $<star_indent>.ast;
-    my Str $title = $<headline>.ast;
+    my $headline = $<headline>.ast;
 
+    say $headline.perl;
+    my Str $title = @($headline)[0];
     my OrgNode $orgnode = OrgNode.new(:$level, :$title);
+    $orgnode.tags = @($headline)[1];
     logger.debug(~$orgnode);
 
     my $content;
     for @($<content_line>) -> $line {
 	$content ~= $line;
     }
+
     $orgnode.content = $content;
 
     for @($<orgnode>) -> $node {
@@ -41,8 +45,8 @@ method content($/){
 }
 
 method headline($/) {
-    logger.debug("In Headline: $0");
-    make ~$0;
+    logger.debug("In Headline: $0");    
+    make [~$/[0], @($<tags>).map(-> $x { ~$x })]
 }
 
 # start_indent ast = number of stars

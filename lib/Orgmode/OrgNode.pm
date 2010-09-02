@@ -7,6 +7,7 @@ class OrgNode {
     has Int $.level is rw;
     has @.children is rw;
     has Str $.content is rw;
+    has @.tags is rw;
 
     method Str(){    
         "OrgNode($.level, $.title)";
@@ -16,6 +17,12 @@ class OrgNode {
         my Str $indent = ' ' x 4;
         my $str = "OrgNode($.level, $.title)\{\n";
 	
+	$str ~= "TAGS:";
+	for @.tags -> $tag {
+	    $str ~= $tag;
+	}
+	$str ~= "\n";
+
 	if $.content {
 	    my $content = "$.content";
 	    $content ~~ s:g/^^/## /;
